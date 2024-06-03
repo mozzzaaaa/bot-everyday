@@ -1,5 +1,5 @@
+require('dotenv').config();
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
-
 const { Guilds, GuildMembers, GuildMessages } = GatewayIntentBits;
 const { User, Message, GuildMember, ThreadMember, Channel } = Partials;
 
@@ -14,7 +14,7 @@ const client = new Client({
 client.commands = new Collection();
 client.config = require('./config.json')
 
-client.login(client.config.TOKEN).then(() => {
+client.login(process.env.TOKEN).then(() => {
     loadEvents(client);
     loadCommands(client);
 });
